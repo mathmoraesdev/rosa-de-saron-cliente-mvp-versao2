@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kit Card + Balinhas Personalizado | Rosa de Saron Festas</title>
 <meta name="description" content="Kit digital de Card e Balinhas personalizado com o nome da sua festa. Receba pronto para imprimir ou peça já montado, do seu jeito.">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/favicon.png">
+<meta property="og:type" content="product">
+<meta property="og:title" content="Kit Card + Balinhas Personalizado | Rosa de Saron Festas">
+<meta property="og:description" content="Kit digital de Card e Balinhas personalizado com o nome da sua festa. Formatos PDF e PNG, entrega imediata pelo WhatsApp ou e-mail.">
+<meta property="og:image" content="assets/img/logo.png">
+<meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
@@ -55,8 +62,9 @@ p{ margin:0; line-height:1.65; color:var(--text-soft); }
 .site-header{ position:sticky; top:0; z-index:100; background:rgba(255,253,253,.92); backdrop-filter:blur(10px); border-bottom:1px solid rgba(199,109,154,.08); }
 .nav-row{ display:flex; align-items:center; justify-content:space-between; padding:14px 24px; gap:20px; }
 .logo-mark{ display:flex; align-items:center; gap:10px; }
-.logo-dot{ width:42px; height:42px; border-radius:50%; background:linear-gradient(135deg,var(--pink),var(--accent)); display:flex; align-items:center; justify-content:center; color:#fff; box-shadow:0 4px 14px rgba(199,109,154,.3); }
+.logo-dot{ width:42px; height:42px; border-radius:50%; background:linear-gradient(135deg,var(--pink),var(--accent)); display:flex; align-items:center; justify-content:center; color:#fff; box-shadow:0 4px 14px rgba(199,109,154,.3); overflow:hidden; flex-shrink:0; }
 .logo-dot i{ width:20px; height:20px; }
+.logo-dot img{ width:100%; height:100%; object-fit:cover; display:block; }
 .logo-text{ font-family:var(--font-display); font-size:1.2rem; font-weight:700; color:var(--accent); display:flex; flex-direction:column; line-height:1.1; }
 .logo-text span{ font-family:var(--font-body); font-size:.54rem; font-weight:600; letter-spacing:1.6px; color:var(--gold); text-transform:uppercase; }
 .crumb-link{ display:flex; align-items:center; gap:6px; font-size:.85rem; font-weight:500; color:var(--accent); }
@@ -70,6 +78,15 @@ p{ margin:0; line-height:1.65; color:var(--text-soft); }
 .breadcrumb{ padding:18px 0; font-size:.8rem; color:var(--text-soft); }
 .breadcrumb a{ color:var(--accent); }
 .breadcrumb .sep{ margin:0 6px; opacity:.5; }
+
+/* ---------- Category chips (catálogo de arquivos digitais) ---------- */
+.cat-strip{ background:var(--pink-wash); border-bottom:1px solid rgba(199,109,154,.12); }
+.cat-strip .container{ display:flex; gap:10px; padding:12px 24px; overflow-x:auto; scrollbar-width:none; }
+.cat-strip .container::-webkit-scrollbar{ display:none; }
+.cat-chip{ flex-shrink:0; display:inline-flex; align-items:center; gap:6px; font-size:.78rem; font-weight:500; color:var(--text-soft); background:#fff; border:1px solid rgba(199,109,154,.2); padding:8px 15px; border-radius:999px; transition:background .2s, color .2s, border-color .2s; }
+.cat-chip i{ width:14px; height:14px; }
+.cat-chip:hover{ background:var(--pink-soft); color:var(--accent); border-color:var(--pink); }
+.cat-chip.active{ background:linear-gradient(135deg,var(--pink),var(--accent)); color:#fff; border-color:transparent; }
 
 /* ---------- Product section ---------- */
 .product{ padding:10px 0 60px; }
@@ -194,11 +211,11 @@ p{ margin:0; line-height:1.65; color:var(--text-soft); }
 
 <header class="site-header">
   <div class="nav-row">
-    <a href="#" class="logo-mark">
-      <div class="logo-dot"><i data-lucide="flower-2"></i></div>
+    <a href="https://mathmoraesdev.github.io/rosa-de-saron-cliente-mvp/" class="logo-mark">
+      <div class="logo-dot"><img src="assets/img/logo.png" alt="Rosa de Saron Festas"></div>
       <div class="logo-text">Rosa de Saron<span>Festas & Papelaria</span></div>
     </a>
-    <a href="#" class="crumb-link"><i data-lucide="arrow-left"></i><span>Voltar para a loja</span></a>
+    <a href="https://mathmoraesdev.github.io/rosa-de-saron-cliente-mvp/" class="crumb-link"><i data-lucide="arrow-left"></i><span>Voltar para a loja</span></a>
     <div style="display:flex;gap:4px;">
       <button class="icon-btn" aria-label="Favoritos"><i data-lucide="heart"></i></button>
       <button class="icon-btn" aria-label="Carrinho"><i data-lucide="shopping-bag"></i><span class="cart-badge">0</span></button>
@@ -206,8 +223,19 @@ p{ margin:0; line-height:1.65; color:var(--text-soft); }
   </div>
 </header>
 
+<nav class="cat-strip" aria-label="Categorias de arquivos digitais">
+  <div class="container">
+    <a href="#" class="cat-chip active"><i data-lucide="sparkles"></i>Card + Balinhas</a>
+    <a href="#" class="cat-chip"><i data-lucide="package-open"></i>Kits Digitais</a>
+    <a href="#" class="cat-chip"><i data-lucide="cake-slice"></i>Topo de Bolo</a>
+    <a href="#" class="cat-chip"><i data-lucide="tag"></i>Etiquetas</a>
+    <a href="#" class="cat-chip"><i data-lucide="calendar-heart"></i>Datas Comemorativas</a>
+    <a href="#" class="cat-chip"><i data-lucide="gift"></i>Festas Prontas</a>
+  </div>
+</nav>
+
 <div class="container breadcrumb">
-  <a href="#">Início</a><span class="sep">/</span><a href="#">Papelaria Digital</a><span class="sep">/</span><span>Card + Balinhas Personalizado</span>
+  <a href="https://mathmoraesdev.github.io/rosa-de-saron-cliente-mvp/">Início</a><span class="sep">/</span><a href="#">Papelaria Digital</a><span class="sep">/</span><span>Card + Balinhas Personalizado</span>
 </div>
 
 <main class="product">
@@ -250,7 +278,12 @@ p{ margin:0; line-height:1.65; color:var(--text-soft); }
       <div class="personalize">
         <label for="nomeFesta">Nome para personalizar o card</label>
         <input type="text" id="nomeFesta" placeholder="Ex: Chá da Sofia, Aniversário do Davi...">
-        <p class="hint">Usaremos esse nome no arquivo enviado para o seu WhatsApp ou e-mail.</p>
+      </div>
+
+      <div class="personalize">
+        <label for="emailEntrega">E-mail para receber o arquivo</label>
+        <input type="email" id="emailEntrega" placeholder="seuemail@exemplo.com">
+        <p class="hint">Enviamos o arquivo pronto para este e-mail ou pelo WhatsApp — o que for mais rápido para você.</p>
       </div>
 
       <div class="qty-row">
@@ -284,11 +317,12 @@ p{ margin:0; line-height:1.65; color:var(--text-soft); }
         <button class="acc-head" data-target="acc1">Sobre o produto (leia com atenção) <i data-lucide="chevron-down"></i></button>
         <div class="acc-body" id="acc1">
           <div class="acc-body-inner">
-            <p><strong>Formatos do arquivo:</strong> PDF (impressão) e PNG (alta resolução).</p>
-            <p>Este é um produto <strong>digital personalizado</strong>: assim que você envia o nome desejado, preparamos e enviamos o arquivo pronto para impressão — não é um produto físico.</p>
+            <p><strong>Formatos do arquivo:</strong> PDF (impressão) e PNG em alta resolução.</p>
+            <p>Este é um produto <strong>digital personalizado</strong>: assim que você envia o nome desejado, preparamos e enviamos o arquivo pronto para impressão — <strong>não vendemos produto físico</strong>.</p>
             <ul>
-              <li><i data-lucide="check-circle-2"></i>O arquivo é enviado no WhatsApp ou e-mail informado na compra.</li>
+              <li><i data-lucide="check-circle-2"></i>O arquivo é enviado no WhatsApp ou no e-mail informado na compra.</li>
               <li><i data-lucide="check-circle-2"></i>Prazo de entrega: até 24h após a confirmação do pagamento e do nome personalizado.</li>
+              <li><i data-lucide="check-circle-2"></i>Recomendamos baixar e salvar o arquivo assim que ele chegar — o link de download expira em 7 dias após a compra.</li>
               <li><i data-lucide="check-circle-2"></i>Não trabalhamos com alterações de arte fora do campo de personalização incluso.</li>
               <li><i data-lucide="check-circle-2"></i>Dúvidas? Fale com a gente pelo WhatsApp antes ou depois da compra.</li>
             </ul>
@@ -327,12 +361,19 @@ p{ margin:0; line-height:1.65; color:var(--text-soft); }
   </div>
 </section>
 
-<a class="wa-float" href="#" aria-label="Falar no WhatsApp"><i data-lucide="message-circle"></i></a>
+<a class="wa-float" href="https://wa.me/5551993705243?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20o%20Kit%20Card%20%2B%20Balinhas%20Personalizado." target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><i data-lucide="message-circle"></i></a>
 
 <footer class="site-footer">
   <div class="container">
     <div class="fname">Rosa de Saron Festas</div>
-    <p>Papelaria personalizada, lembrancinhas e topos de bolo artesanais · São Leopoldo/RS</p>
+    <p>Papelaria personalizada, lembrancinhas e arquivos digitais · São Leopoldo/RS</p>
+    <p style="margin-top:10px;">
+      <a href="https://wa.me/5551993705243" style="color:#f4dde8;" target="_blank" rel="noopener">WhatsApp</a>
+      &nbsp;·&nbsp;
+      <a href="https://www.instagram.com/rosa_de_saronpersonalizados" style="color:#f4dde8;" target="_blank" rel="noopener">@rosa_de_saronpersonalizados</a>
+      &nbsp;·&nbsp;
+      <a href="https://mathmoraesdev.github.io/rosa-de-saron-cliente-mvp/" style="color:#f4dde8;">Ver loja completa</a>
+    </p>
   </div>
 </footer>
 
@@ -425,8 +466,10 @@ function initCartActions(){
   document.getElementById('buyWaBtn').addEventListener('click', (e) => {
     e.preventDefault();
     const nome = document.getElementById('nomeFesta').value.trim();
-    const texto = encodeURIComponent(`Olá! Quero comprar o Kit Card + Balinhas Personalizado${nome ? ' para: ' + nome : ''}.`);
-    window.open(`https://wa.me/5500000000000?text=${texto}`, '_blank');
+    const email = document.getElementById('emailEntrega').value.trim();
+    let texto = `Olá! Quero comprar o Kit Card + Balinhas Personalizado${nome ? ' para: ' + nome : ''}.`;
+    if (email) texto += ` Meu e-mail para envio do arquivo: ${email}.`;
+    window.open(`https://wa.me/5551993705243?text=${encodeURIComponent(texto)}`, '_blank');
   });
 }
 

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kit Card + Balinhas Personalizado | Rosa de Saron Festas</title>
+<meta name="description" content="Kit digital de Card e Balinhas personalizado com o nome da sua festa. Receba pronto para imprimir ou peça já montado, do seu jeito.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+
+<style>
+/* ===========================================================
+   ROSA DE SARON FESTAS — Página de Produto (Card + Balinhas)
+   Mesmo design system do site principal
+   Primary #E88CB3 · Secondary #F7D6E5 · Bg #FFFDFD
+   Accent #C76D9A · Text #333333 · Gold #D6B25E
+=========================================================== */
+:root{
+  --pink:#E88CB3; --pink-soft:#F7D6E5; --pink-wash:#FBEAF1;
+  --bg:#FFFDFD; --accent:#C76D9A; --gold:#D6B25E;
+  --text:#333333; --text-soft:#6a4a58; --white:#ffffff;
+  --shadow-sm:0 4px 16px rgba(199,109,154,.12);
+  --shadow-md:0 12px 32px rgba(199,109,154,.18);
+  --shadow-lg:0 24px 60px rgba(199,109,154,.24);
+  --radius-sm:10px; --radius-md:18px; --radius-lg:28px;
+  --font-display:'Playfair Display',serif; --font-body:'Poppins',sans-serif;
+}
+*,*::before,*::after{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{ margin:0; font-family:var(--font-body); color:var(--text); background:var(--bg); -webkit-font-smoothing:antialiased; }
+img{ max-width:100%; display:block; }
+a{ text-decoration:none; color:inherit; }
+ul{ list-style:none; margin:0; padding:0; }
+button{ font-family:inherit; cursor:pointer; }
+input{ font-family:inherit; font-size:1rem; }
+h1,h2,h3,h4{ font-family:var(--font-display); font-weight:600; margin:0; line-height:1.15; color:#3a2530; }
+p{ margin:0; line-height:1.65; color:var(--text-soft); }
+:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; border-radius:4px; }
+.container{ width:100%; max-width:1180px; margin:0 auto; padding:0 24px; }
+
+/* ---------- Buttons ---------- */
+.btn{ display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:14px 26px; border-radius:999px; border:none; font-size:.92rem; font-weight:600; cursor:pointer; transition:transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s, background .25s; white-space:nowrap; }
+.btn i{ width:17px; height:17px; }
+.btn-primary{ background:linear-gradient(135deg,var(--pink),var(--accent)); color:#fff; box-shadow:var(--shadow-md); }
+.btn-primary:hover{ transform:translateY(-3px); box-shadow:var(--shadow-lg); }
+.btn-outline{ background:transparent; color:var(--accent); border:1.5px solid var(--pink); }
+.btn-outline:hover{ background:var(--pink-soft); }
+.btn-gold{ background:linear-gradient(135deg,var(--gold),#c69a3f); color:#fff; box-shadow:0 10px 26px rgba(214,178,94,.35); }
+.btn-gold:hover{ transform:translateY(-3px); }
+.btn-block{ width:100%; }
+
+/* ---------- Topbar / Header (minimal) ---------- */
+.topbar{ background:#3a2530; color:#f4dde8; font-size:.76rem; padding:7px 0; text-align:center; }
+.site-header{ position:sticky; top:0; z-index:100; background:rgba(255,253,253,.92); backdrop-filter:blur(10px); border-bottom:1px solid rgba(199,109,154,.08); }
+.nav-row{ display:flex; align-items:center; justify-content:space-between; padding:14px 24px; gap:20px; }
+.logo-mark{ display:flex; align-items:center; gap:10px; }
+.logo-dot{ width:42px; height:42px; border-radius:50%; background:linear-gradient(135deg,var(--pink),var(--accent)); display:flex; align-items:center; justify-content:center; color:#fff; box-shadow:0 4px 14px rgba(199,109,154,.3); }
+.logo-dot i{ width:20px; height:20px; }
+.logo-text{ font-family:var(--font-display); font-size:1.2rem; font-weight:700; color:var(--accent); display:flex; flex-direction:column; line-height:1.1; }
+.logo-text span{ font-family:var(--font-body); font-size:.54rem; font-weight:600; letter-spacing:1.6px; color:var(--gold); text-transform:uppercase; }
+.crumb-link{ display:flex; align-items:center; gap:6px; font-size:.85rem; font-weight:500; color:var(--accent); }
+.crumb-link i{ width:16px; height:16px; }
+.icon-btn{ position:relative; width:40px; height:40px; display:flex; align-items:center; justify-content:center; border-radius:50%; color:var(--text); transition:background .2s, color .2s; }
+.icon-btn:hover{ background:var(--pink-soft); color:var(--accent); }
+.icon-btn i{ width:19px; height:19px; }
+.cart-badge{ position:absolute; top:0; right:0; background:var(--pink); color:#fff; font-size:.6rem; font-weight:700; width:16px; height:16px; border-radius:50%; display:flex; align-items:center; justify-content:center; }
+
+/* ---------- Breadcrumb ---------- */
+.breadcrumb{ padding:18px 0; font-size:.8rem; color:var(--text-soft); }
+.breadcrumb a{ color:var(--accent); }
+.breadcrumb .sep{ margin:0 6px; opacity:.5; }
+
+/* ---------- Product section ---------- */
+.product{ padding:10px 0 60px; }
+.product-grid{ display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:flex-start; }
+
+/* gallery */
+.gallery-main{ position:relative; aspect-ratio:1/1; border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-lg);
+  background:
+    radial-gradient(circle at 22% 20%, rgba(255,255,255,.55), transparent 45%),
+    radial-gradient(circle at 82% 28%, rgba(214,178,94,.35), transparent 40%),
+    linear-gradient(135deg,#F7D6E5,#E88CB3 55%,#C76D9A);
+}
+.gallery-main::before{ content:''; position:absolute; inset:0; background-image:radial-gradient(circle, rgba(255,255,255,.5) 2px, transparent 2.5px); background-size:26px 26px; opacity:.4; }
+.gallery-badge{ position:absolute; top:18px; left:18px; background:#fff; color:var(--accent); font-size:.72rem; font-weight:700; padding:8px 14px; border-radius:999px; box-shadow:var(--shadow-sm); }
+.gallery-badge.digital{ top:18px; left:auto; right:18px; background:linear-gradient(135deg,var(--gold),#c69a3f); color:#fff; display:flex; align-items:center; gap:6px; }
+.gallery-badge.digital i{ width:13px; height:13px; }
+.gallery-center{ position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:24px; gap:10px; }
+.gallery-center .stack{ display:flex; gap:10px; }
+.mock-card{ width:96px; height:130px; background:#fff; border-radius:12px; box-shadow:var(--shadow-md); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; padding:10px; transform:rotate(-6deg); }
+.mock-card.b{ transform:rotate(5deg); background:var(--pink-wash); }
+.mock-card i{ width:22px; height:22px; color:var(--accent); }
+.mock-card span{ font-family:var(--font-display); font-size:.62rem; color:var(--accent); font-weight:600; }
+.gallery-thumbs{ display:flex; gap:12px; margin-top:14px; }
+.thumb{ width:70px; height:70px; border-radius:12px; border:2px solid transparent; cursor:pointer; overflow:hidden; position:relative; background:linear-gradient(135deg,#F7D6E5,#E88CB3); display:flex; align-items:center; justify-content:center; color:#fff; transition:border-color .2s, transform .2s; }
+.thumb:hover{ transform:translateY(-2px); }
+.thumb.active{ border-color:var(--accent); }
+.thumb i{ width:22px; height:22px; }
+
+/* product info */
+.prod-cat{ display:inline-flex; align-items:center; gap:7px; font-size:.78rem; font-weight:600; color:var(--accent); background:var(--pink-soft); padding:6px 14px; border-radius:999px; }
+.prod-title{ font-size:clamp(1.6rem,3vw,2.3rem); margin-top:16px; }
+.prod-rating{ display:flex; align-items:center; gap:8px; margin-top:10px; color:var(--gold); font-size:.95rem; }
+.prod-rating span{ color:var(--text-soft); font-size:.8rem; }
+.prod-price-block{ margin-top:20px; display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; }
+.prod-price{ font-family:var(--font-display); font-size:2rem; color:var(--accent); font-weight:700; }
+.prod-price-old{ font-size:1rem; color:var(--text-soft); text-decoration:line-through; opacity:.6; }
+.prod-installment{ font-size:.82rem; color:var(--text-soft); margin-top:4px; }
+
+.prod-desc{ margin-top:18px; max-width:480px; }
+
+.personalize{ margin-top:26px; }
+.personalize label{ display:block; font-size:.85rem; font-weight:600; color:#3a2530; margin-bottom:8px; }
+.personalize input{ width:100%; padding:13px 16px; border-radius:var(--radius-sm); border:1.5px solid var(--pink-soft); background:#fff; transition:border-color .2s; }
+.personalize input:focus{ border-color:var(--pink); outline:none; }
+.personalize .hint{ font-size:.75rem; color:var(--text-soft); margin-top:6px; }
+
+.qty-row{ display:flex; align-items:center; gap:16px; margin-top:26px; flex-wrap:wrap; }
+.qty-control{ display:flex; align-items:center; border:1.5px solid var(--pink-soft); border-radius:999px; overflow:hidden; }
+.qty-control button{ width:42px; height:42px; background:#fff; border:none; color:var(--accent); font-size:1.1rem; display:flex; align-items:center; justify-content:center; }
+.qty-control button:hover{ background:var(--pink-soft); }
+.qty-control span{ width:40px; text-align:center; font-weight:600; }
+.prod-actions{ display:flex; gap:14px; margin-top:22px; flex-wrap:wrap; }
+.prod-actions .btn{ flex:1; min-width:180px; }
+.fav-link{ display:flex; align-items:center; gap:8px; margin-top:18px; font-size:.85rem; color:var(--text-soft); }
+.fav-link i{ width:16px; height:16px; }
+.fav-link.active{ color:var(--accent); }
+.fav-link.active i{ fill:var(--pink); color:var(--pink); }
+
+.trust-row{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:34px; padding-top:26px; border-top:1px solid rgba(199,109,154,.15); }
+.trust-item{ display:flex; flex-direction:column; align-items:center; text-align:center; gap:8px; font-size:.72rem; color:var(--text-soft); }
+.trust-item i{ width:22px; height:22px; color:var(--accent); }
+
+/* ---------- Accordion ---------- */
+.info-block{ margin-top:70px; }
+.accordion{ border-radius:var(--radius-md); overflow:hidden; box-shadow:var(--shadow-sm); background:#fff; }
+.acc-item{ border-bottom:1px solid rgba(199,109,154,.14); }
+.acc-item:last-child{ border-bottom:none; }
+.acc-head{ width:100%; display:flex; align-items:center; justify-content:space-between; padding:20px 24px; background:none; border:none; text-align:left; font-family:var(--font-display); font-size:1.05rem; color:#3a2530; }
+.acc-head i{ width:19px; height:19px; color:var(--accent); transition:transform .3s; flex-shrink:0; }
+.acc-item.open .acc-head i{ transform:rotate(180deg); }
+.acc-body{ max-height:0; overflow:hidden; transition:max-height .35s ease; }
+.acc-item.open .acc-body{ max-height:600px; }
+.acc-body-inner{ padding:0 24px 24px; font-size:.9rem; }
+.acc-body-inner p + p{ margin-top:10px; }
+.acc-body-inner ul{ margin-top:10px; display:flex; flex-direction:column; gap:8px; }
+.acc-body-inner li{ display:flex; gap:8px; font-size:.88rem; color:var(--text-soft); }
+.acc-body-inner li i{ width:16px; height:16px; color:var(--accent); flex-shrink:0; margin-top:2px; }
+.acc-body-inner strong{ color:#3a2530; }
+
+/* ---------- Related products ---------- */
+.related{ padding:70px 0 90px; background:linear-gradient(180deg,#fff 0%,#FEF6F9 100%); }
+.section-head{ max-width:560px; margin:0 auto 40px; text-align:center; }
+.eyebrow{ display:inline-flex; align-items:center; gap:8px; font-size:.78rem; font-weight:600; color:var(--accent); background:var(--pink-soft); padding:7px 15px; border-radius:999px; }
+.section-head h2{ font-size:clamp(1.5rem,3vw,2rem); margin-top:14px; }
+.product-grid-cards{ display:grid; grid-template-columns:repeat(4,1fr); gap:22px; }
+.prod-card{ background:#fff; border-radius:var(--radius-md); overflow:hidden; box-shadow:var(--shadow-sm); transition:transform .3s, box-shadow .3s; }
+.prod-card:hover{ transform:translateY(-6px); box-shadow:var(--shadow-md); }
+.prod-card-img{ position:relative; aspect-ratio:1/1; background:linear-gradient(135deg,#F7D6E5,#E88CB3); display:flex; align-items:center; justify-content:center; color:#fff; }
+.prod-card-img i{ width:34px; height:34px; }
+.mini-fav{ position:absolute; top:10px; right:10px; width:32px; height:32px; border-radius:50%; background:rgba(255,255,255,.85); display:flex; align-items:center; justify-content:center; color:var(--accent); }
+.mini-fav i{ width:15px; height:15px; }
+.prod-card-info{ padding:16px; }
+.prod-card-info .cat{ font-size:.68rem; font-weight:600; color:var(--gold); text-transform:uppercase; letter-spacing:.6px; }
+.prod-card-info h4{ font-size:.95rem; margin-top:6px; }
+.prod-card-info .price{ margin-top:10px; font-family:var(--font-display); color:var(--accent); font-weight:700; }
+.prod-card-info .btn{ margin-top:12px; width:100%; padding:10px; font-size:.8rem; }
+
+@media (max-width:900px){
+  .product-grid{ grid-template-columns:1fr; gap:34px; }
+  .trust-row{ grid-template-columns:1fr; gap:16px; }
+  .product-grid-cards{ grid-template-columns:repeat(2,1fr); }
+  .nav-row .crumb-link span{ display:none; }
+}
+
+/* ---------- Whatsapp float ---------- */
+.wa-float{ position:fixed; bottom:24px; right:24px; width:58px; height:58px; border-radius:50%; background:#25D366; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 28px rgba(37,211,102,.4); z-index:150; color:#fff; }
+.wa-float i{ width:27px; height:27px; }
+.wa-float:hover{ transform:scale(1.08); }
+
+/* ---------- Footer ---------- */
+.site-footer{ background:#3a2530; color:#f4dde8; padding:44px 0 24px; text-align:center; font-size:.82rem; }
+.site-footer p{ color:#e7c8d6; }
+.site-footer .fname{ font-family:var(--font-display); font-size:1.2rem; color:#fff; margin-bottom:8px; }
+
+/* toast */
+.rs-toast{ position:fixed; bottom:100px; right:26px; background:#fff; color:#333; padding:14px 20px; border-radius:14px; box-shadow:0 12px 32px rgba(199,109,154,.3); font-size:.86rem; font-weight:500; z-index:200; border-left:4px solid var(--pink); opacity:0; transform:translateY(16px); transition:transform .4s cubic-bezier(.22,1,.36,1), opacity .4s; }
+</style>
+</head>
+<body>
+
+<div class="topbar">✨ Personalize com o nome da sua festa — receba em minutos no WhatsApp ✨</div>
+
+<header class="site-header">
+  <div class="nav-row">
+    <a href="#" class="logo-mark">
+      <div class="logo-dot"><i data-lucide="flower-2"></i></div>
+      <div class="logo-text">Rosa de Saron<span>Festas & Papelaria</span></div>
+    </a>
+    <a href="#" class="crumb-link"><i data-lucide="arrow-left"></i><span>Voltar para a loja</span></a>
+    <div style="display:flex;gap:4px;">
+      <button class="icon-btn" aria-label="Favoritos"><i data-lucide="heart"></i></button>
+      <button class="icon-btn" aria-label="Carrinho"><i data-lucide="shopping-bag"></i><span class="cart-badge">0</span></button>
+    </div>
+  </div>
+</header>
+
+<div class="container breadcrumb">
+  <a href="#">Início</a><span class="sep">/</span><a href="#">Papelaria Digital</a><span class="sep">/</span><span>Card + Balinhas Personalizado</span>
+</div>
+
+<main class="product">
+  <div class="container product-grid">
+
+    <!-- Galeria -->
+    <div class="gallery">
+      <div class="gallery-main">
+        <span class="gallery-badge">Mais vendido</span>
+        <span class="gallery-badge digital"><i data-lucide="download"></i>Arquivo digital</span>
+        <div class="gallery-center">
+          <div class="stack">
+            <div class="mock-card"><i data-lucide="mail"></i><span>Card</span></div>
+            <div class="mock-card b"><i data-lucide="candy"></i><span>Balinha</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-thumbs">
+        <div class="thumb active"><i data-lucide="layout-grid"></i></div>
+        <div class="thumb"><i data-lucide="mail"></i></div>
+        <div class="thumb"><i data-lucide="candy"></i></div>
+        <div class="thumb"><i data-lucide="palette"></i></div>
+      </div>
+    </div>
+
+    <!-- Info -->
+    <div class="prod-info-col">
+      <span class="prod-cat"><i data-lucide="sparkles" style="width:13px;height:13px;"></i> Papelaria Personalizada</span>
+      <h1 class="prod-title">Kit Card + Balinhas <em style="font-style:italic;color:var(--accent);">à Sua Maneira</em></h1>
+      <div class="prod-rating">★★★★★ <span>(38 avaliações)</span></div>
+
+      <div class="prod-price-block">
+        <span class="prod-price">R$ 14,90</span>
+        <span class="prod-price-old">R$ 19,90</span>
+      </div>
+      <p class="prod-installment">ou 3x de R$ 4,97 sem juros · envio digital imediato</p>
+
+      <p class="prod-desc">Um card fofo com balinhas coladas, prontinho para presentear ou compor a mesa da sua festa. Você recebe o arquivo em PDF e PNG editável com o nome e a cor da sua celebração — é só personalizar, imprimir e montar do seu jeito.</p>
+
+      <div class="personalize">
+        <label for="nomeFesta">Nome para personalizar o card</label>
+        <input type="text" id="nomeFesta" placeholder="Ex: Chá da Sofia, Aniversário do Davi...">
+        <p class="hint">Usaremos esse nome no arquivo enviado para o seu WhatsApp ou e-mail.</p>
+      </div>
+
+      <div class="qty-row">
+        <div class="qty-control">
+          <button type="button" id="qtyMinus" aria-label="Diminuir quantidade">−</button>
+          <span id="qtyValue">1</span>
+          <button type="button" id="qtyPlus" aria-label="Aumentar quantidade">+</button>
+        </div>
+        <span style="font-size:.8rem;color:var(--text-soft);">kits digitais</span>
+      </div>
+
+      <div class="prod-actions">
+        <button class="btn btn-primary btn-block" id="addCartBtn"><i data-lucide="shopping-bag"></i> Adicionar ao carrinho</button>
+        <button class="btn btn-gold btn-block" id="buyWaBtn"><i data-lucide="message-circle"></i> Comprar pelo WhatsApp</button>
+      </div>
+
+      <button class="fav-link" id="favBtn"><i data-lucide="heart"></i> Adicionar aos favoritos</button>
+
+      <div class="trust-row">
+        <div class="trust-item"><i data-lucide="zap"></i>Entrega imediata após confirmação</div>
+        <div class="trust-item"><i data-lucide="shield-check"></i>Pagamento seguro</div>
+        <div class="trust-item"><i data-lucide="messages-square"></i>Suporte direto no WhatsApp</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Accordion de informações -->
+  <div class="container info-block">
+    <div class="accordion" id="accordion">
+      <div class="acc-item open">
+        <button class="acc-head" data-target="acc1">Sobre o produto (leia com atenção) <i data-lucide="chevron-down"></i></button>
+        <div class="acc-body" id="acc1">
+          <div class="acc-body-inner">
+            <p><strong>Formatos do arquivo:</strong> PDF (impressão) e PNG (alta resolução).</p>
+            <p>Este é um produto <strong>digital personalizado</strong>: assim que você envia o nome desejado, preparamos e enviamos o arquivo pronto para impressão — não é um produto físico.</p>
+            <ul>
+              <li><i data-lucide="check-circle-2"></i>O arquivo é enviado no WhatsApp ou e-mail informado na compra.</li>
+              <li><i data-lucide="check-circle-2"></i>Prazo de entrega: até 24h após a confirmação do pagamento e do nome personalizado.</li>
+              <li><i data-lucide="check-circle-2"></i>Não trabalhamos com alterações de arte fora do campo de personalização incluso.</li>
+              <li><i data-lucide="check-circle-2"></i>Dúvidas? Fale com a gente pelo WhatsApp antes ou depois da compra.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-head" data-target="acc2">Como funciona a entrega <i data-lucide="chevron-down"></i></button>
+        <div class="acc-body" id="acc2">
+          <div class="acc-body-inner">
+            <p>1. Você escolhe o kit e escreve o nome para personalizar. 2. Confirmamos os dados e o pagamento pelo WhatsApp. 3. Enviamos o arquivo pronto direto na sua conversa, sem complicação.</p>
+          </div>
+        </div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-head" data-target="acc3">Perguntas frequentes <i data-lucide="chevron-down"></i></button>
+        <div class="acc-body" id="acc3">
+          <div class="acc-body-inner">
+            <p><strong>Posso trocar as cores?</strong> Sim, seguimos a paleta da sua festa sempre que possível.</p>
+            <p><strong>Recebo o arquivo já impresso?</strong> Não, o envio é digital — você imprime onde preferir, ou pode nos pedir um orçamento para a versão já impressa e montada.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Relacionados -->
+<section class="related">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow"><i data-lucide="heart-handshake" style="width:14px;height:14px;"></i> Combine com sua festa</span>
+      <h2>Você também vai gostar</h2>
+    </div>
+    <div class="product-grid-cards" id="relatedGrid"></div>
+  </div>
+</section>
+
+<a class="wa-float" href="#" aria-label="Falar no WhatsApp"><i data-lucide="message-circle"></i></a>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="fname">Rosa de Saron Festas</div>
+    <p>Papelaria personalizada, lembrancinhas e topos de bolo artesanais · São Leopoldo/RS</p>
+  </div>
+</footer>
+
+<script>
+const relacionados = [
+  { name:'Rótulo Personalizado', cat:'Papelaria', price:9.90, icon:'tag' },
+  { name:'Combo Festa Completo', cat:'Kit Digital', price:24.90, icon:'gift' },
+  { name:'Topo de Bolo à Sua Maneira', cat:'Topo de Bolo', price:12.90, icon:'cake' },
+  { name:'Caixinha para Doces', cat:'Papelaria', price:11.90, icon:'package' },
+];
+
+function renderRelated(){
+  const grid = document.getElementById('relatedGrid');
+  grid.innerHTML = relacionados.map(p => `
+    <div class="prod-card">
+      <div class="prod-card-img"><i data-lucide="${p.icon}"></i><span class="mini-fav"><i data-lucide="heart"></i></span></div>
+      <div class="prod-card-info">
+        <span class="cat">${p.cat}</span>
+        <h4>${p.name}</h4>
+        <div class="price">R$ ${p.price.toFixed(2)}</div>
+        <button class="btn btn-outline">Adicionar</button>
+      </div>
+    </div>
+  `).join('');
+  if (typeof lucide !== 'undefined') lucide.createIcons();
+}
+
+function initAccordion(){
+  document.querySelectorAll('.acc-head').forEach(head => {
+    head.addEventListener('click', () => {
+      const item = head.closest('.acc-item');
+      item.classList.toggle('open');
+    });
+  });
+}
+
+function initQty(){
+  const val = document.getElementById('qtyValue');
+  document.getElementById('qtyMinus').addEventListener('click', () => {
+    let n = parseInt(val.textContent, 10);
+    if (n > 1) val.textContent = n - 1;
+  });
+  document.getElementById('qtyPlus').addEventListener('click', () => {
+    val.textContent = parseInt(val.textContent, 10) + 1;
+  });
+}
+
+function initFav(){
+  const btn = document.getElementById('favBtn');
+  btn.addEventListener('click', () => {
+    btn.classList.toggle('active');
+    btn.innerHTML = btn.classList.contains('active')
+      ? '<i data-lucide="heart"></i> Nos favoritos'
+      : '<i data-lucide="heart"></i> Adicionar aos favoritos';
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+  });
+}
+
+function initThumbs(){
+  document.querySelectorAll('.thumb').forEach(t => {
+    t.addEventListener('click', () => {
+      document.querySelectorAll('.thumb').forEach(x => x.classList.remove('active'));
+      t.classList.add('active');
+    });
+  });
+}
+
+function toast(msg){
+  let t = document.querySelector('.rs-toast');
+  if (!t){
+    t = document.createElement('div');
+    t.className = 'rs-toast';
+    document.body.appendChild(t);
+  }
+  t.textContent = msg;
+  requestAnimationFrame(() => { t.style.opacity = '1'; t.style.transform = 'translateY(0)'; });
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => { t.style.opacity = '0'; t.style.transform = 'translateY(16px)'; }, 2600);
+}
+
+function initCartActions(){
+  const badge = document.querySelector('.cart-badge');
+  let count = 0;
+  document.getElementById('addCartBtn').addEventListener('click', () => {
+    const qty = parseInt(document.getElementById('qtyValue').textContent, 10);
+    count += qty;
+    badge.textContent = count;
+    toast('Kit adicionado ao carrinho ✨');
+  });
+  document.getElementById('buyWaBtn').addEventListener('click', (e) => {
+    e.preventDefault();
+    const nome = document.getElementById('nomeFesta').value.trim();
+    const texto = encodeURIComponent(`Olá! Quero comprar o Kit Card + Balinhas Personalizado${nome ? ' para: ' + nome : ''}.`);
+    window.open(`https://wa.me/5500000000000?text=${texto}`, '_blank');
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderRelated();
+  initAccordion();
+  initQty();
+  initFav();
+  initThumbs();
+  initCartActions();
+  if (typeof lucide !== 'undefined') lucide.createIcons();
+});
+</script>
+</body>
+</html>
